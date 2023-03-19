@@ -1,12 +1,25 @@
-<div id="<%= dom_id blog %>">
-  <p>
-    <strong>Title:</strong>
+
+<div class="card my-3" id="<%= dom_id blog %>">
+  <%#img src="..." class="card-img-top" alt="..."%>
+  <div class="card-body">
+    <h5 class="card-title">
     <%= blog.title %>
-  </p>
+    </h5>
 
-  <p>
-    <strong>Body:</strong>
-    <%= blog.body %>
-  </p>
-
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><%= blog.body %></li>
+  </ul>
+  <div class="card-body">
+  <div class="row">
+    <%= link_to "All Blogs", blogs_path, class: "btn btn-primary col m-1"  unless current_page?(blogs_path)%>
+    <%= link_to "View", blog_path(blog), class: "btn btn-success col m-1"%>
+    <%= link_to "Edit", edit_blog_path(blog), class: "btn btn-warning col m-1"%>
+    <%
+=begin%>
+ <%= button_to "Destroy", blog, method: :delete, class: "btn btn-danger"%> 
+<%
+=end%>
+    </div>
+  </div>
 </div>
